@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Understanding() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const [input, setInput] = useState(0);
 
@@ -17,12 +19,16 @@ function Understanding() {
 	let feedback = useSelector((store) => store.feedback);
 
 	const onClick = () => {
-		console.log(input);
-		feedback.understanding = input;
-		dispatch({
-			type: 'UPDATE_FEEDBACK',
-			payload: feedback,
-		});
+		if (input === '') {
+			alert('please use a number');
+		} else {
+			feedback.understanding = input;
+			dispatch({
+				type: 'UPDATE_FEEDBACK',
+				payload: feedback,
+			});
+			history.push('/support');
+		}
 	};
 
 	return (
@@ -37,9 +43,7 @@ function Understanding() {
 						onChange={handleChange}
 						value={input}
 					/>
-					<button onClick={onClick}>
-						<Link to='support'>Next</Link>
-					</button>
+					<button onClick={onClick}>Next</button>
 				</form>
 			</Router>
 		</div>

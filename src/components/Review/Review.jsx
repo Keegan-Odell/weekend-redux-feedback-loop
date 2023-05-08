@@ -1,10 +1,15 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Review() {
+	const history = useHistory();
 	const feedback = useSelector((store) => store.feedback);
 	console.log(feedback);
+	const dispatch = useDispatch();
 
 	const onSubmit = () => {
 		axios
@@ -15,7 +20,15 @@ function Review() {
 				comment: feedback.comments,
 			})
 			.then((response) => {
-				console.log('done');
+				feedback.feeling = null;
+				feedback.understanding = null;
+				feedback.support = null;
+				feedback.comments = null;
+				dispatch({
+					type: 'UPDATE_FEEDBACK',
+					payload: feedback,
+				});
+				history.push('/submit');
 			})
 			.catch((err) => {
 				console.log(err);
@@ -32,9 +45,7 @@ function Review() {
 					<li>Support: {feedback.support}</li>
 					<li>Comments: {feedback.comments}</li>
 				</ul>
-				<button>
-					<Link to='/'>Submit</Link>
-				</button>
+				<button onClick={onSubmit}>Submit</button>
 			</Router>
 		</div>
 	);

@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding.jsx';
 import Support from '../Support/Support.jsx';
 import Comment from '../Feedback/Feedback.jsx';
 import Review from '../Review/Review.jsx';
+import Submit from '../Submit/Submit.jsx';
 
 function App() {
 	return (
@@ -16,8 +17,6 @@ function App() {
 				<h4>Don't forget it!</h4>
 			</header>
 			<Router>
-				<Link to='/'>Home</Link>
-
 				<Route exact path='/'>
 					<Feeling />
 				</Route>
@@ -36,6 +35,10 @@ function App() {
 
 				<Route exact path='/review'>
 					<Review />
+				</Route>
+
+				<Route exact path='/submit'>
+					<Submit />
 				</Route>
 			</Router>
 		</div>

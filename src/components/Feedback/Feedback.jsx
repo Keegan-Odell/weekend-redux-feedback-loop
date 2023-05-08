@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Comment() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const [input, setInput] = useState('');
 
@@ -22,6 +24,7 @@ function Comment() {
 			type: 'UPDATE_FEEDBACK',
 			payload: feedback,
 		});
+		history.push('/review');
 	};
 	return (
 		<div>
@@ -34,9 +37,7 @@ function Comment() {
 					onChange={handleChange}
 					value={input}
 				/>
-				<button onClick={onClick}>
-					<Link to='/review'>Next</Link>
-				</button>
+				<button onClick={onClick}>Next</button>
 			</form>
 		</div>
 	);
