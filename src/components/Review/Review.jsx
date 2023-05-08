@@ -5,11 +5,17 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Review() {
+	//these are the hooks we will use
 	const history = useHistory();
-	const feedback = useSelector((store) => store.feedback);
-	console.log(feedback);
 	const dispatch = useDispatch();
 
+	//this is the redux variable from the store
+	const feedback = useSelector((store) => store.feedback);
+
+	//on submit we will send our feedback object to the server
+	//if it is successful we will then set the object back to null
+	//for the next feedback loop
+	//then we will route to the submit page
 	const onSubmit = () => {
 		axios
 			.post('/feedback', {
@@ -37,13 +43,13 @@ function Review() {
 	return (
 		<div>
 			<h2>Review Your Feedback</h2>
-				<ul>
-					<li>Feelings: {feedback.feeling}</li>
-					<li>Understanding: {feedback.understanding}</li>
-					<li>Support: {feedback.support}</li>
-					<li>Comments: {feedback.comments}</li>
-				</ul>
-				<button onClick={onSubmit}>Submit</button>
+			<ul>
+				<li>Feelings: {feedback.feeling}</li>
+				<li>Understanding: {feedback.understanding}</li>
+				<li>Support: {feedback.support}</li>
+				<li>Comments: {feedback.comments}</li>
+			</ul>
+			<button onClick={onSubmit}>Submit</button>
 		</div>
 	);
 }

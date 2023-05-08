@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+//this is our post route that will insert our data into our database
 router.post('/', (req, res) => {
 	const feedback = req.body;
 	console.log(feedback);

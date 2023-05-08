@@ -5,17 +5,24 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Support() {
+  //react hooks we will use
 	const dispatch = useDispatch();
   const history = useHistory();
 
+  //state for our input
 	const [input, setInput] = useState(0);
 
+  //handles input change
 	const handleChange = (event) => {
 		setInput(event.target.value);
 	};
 
+  //this grabs our redux varibale from the store
 	let feedback = useSelector((store) => store.feedback);
 
+  //onclick if the input is a number it will set feedback.support to the input
+  //then it will dispatch this
+  //we will then push to the comment
 	const onClick = () => {
 		if (input === '') {
 			alert('please use a number');
