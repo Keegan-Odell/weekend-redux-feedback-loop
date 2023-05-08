@@ -1,5 +1,4 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -38,7 +37,6 @@ function Review() {
 	return (
 		<div>
 			<h2>Review Your Feedback</h2>
-			<Router>
 				<ul>
 					<li>Feelings: {feedback.feeling}</li>
 					<li>Understanding: {feedback.understanding}</li>
@@ -46,7 +44,6 @@ function Review() {
 					<li>Comments: {feedback.comments}</li>
 				</ul>
 				<button onClick={onSubmit}>Submit</button>
-			</Router>
 		</div>
 	);
 }

@@ -1,9 +1,6 @@
 import React from 'react';
-import Understanding from '../Understanding/Understanding';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -35,7 +32,6 @@ function Feeling() {
 	return (
 		<div>
 			<h2>How are you feeling today?</h2>
-			<Router>
 				<form>
 					<input
 						type='number'
@@ -46,7 +42,6 @@ function Feeling() {
 					/>
 					<button onClick={onClick}>Next</button>
 				</form>
-			</Router>
 		</div>
 	);
 }

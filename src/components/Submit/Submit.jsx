@@ -1,5 +1,4 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Submit() {

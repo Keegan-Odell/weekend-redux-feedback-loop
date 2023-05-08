@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 		feedback.feeling,
 		feedback.understanding,
 		feedback.support,
-		feedback.comments,
+		feedback.comment,
 	];
 
 	pool
